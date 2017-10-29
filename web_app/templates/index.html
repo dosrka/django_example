@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 align="center">信息展示</h1>
+    <table align="center">
+    <tr align="center">
+        <th align="center">ID</th>
+        <th align="center">Name</th>
+        <th align="center">CountryCode</th>
+        <th align="center">District</th>
+        <th align="center">Population</th>
+    </tr>
+    {% for row in city_list %}
+    <tr align="center">
+        <td>{{ row.pk}}</td>
+        <td>{{ row.fields.name }}</td>
+        <td>{{ row.fields.countrycode }}</td>
+        <td>{{ row.fields.district }}</td>
+        <td>{{ row.fields.population }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>
