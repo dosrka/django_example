@@ -23,7 +23,17 @@
         <td>{{ row.fields.population }}</td>
     </tr>
     {% endfor %}
-    </table>
 
+
+    </table>
+<div align="center">
+    {% for page_number in city_list.paginator.page_range %}
+        {% ifequal page_number city_list.number %}
+            {{ page_number }}
+        {% else %}
+            <a href="?page={{ page_number }}">{{ page_number }}</a>
+        {% endifequal %}
+    {% endfor %}
+</div>
 </body>
 </html>
