@@ -13,6 +13,7 @@
         <th align="center">CountryCode</th>
         <th align="center">District</th>
         <th align="center">Population</th>
+        <th align="center">操作</th>
     </tr>
     {% for row in city_list %}
     <tr align="center">
@@ -21,6 +22,10 @@
         <td>{{ row.fields.countrycode }}</td>
         <td>{{ row.fields.district }}</td>
         <td>{{ row.fields.population }}</td>
+        <td>
+            <a href="/del?nid={{ row.pk }}">删除</a>
+{#            <input type="button" value="删除" onclick="nid={{ row.pk }}">#}
+        </td>
     </tr>
     {% endfor %}
 
