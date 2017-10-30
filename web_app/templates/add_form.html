@@ -7,9 +7,11 @@
 <body>
 <form action="add_form.html" method="POST">
     {% csrf_token %}
-    <input type="text" name="name" />
-    <input type="text" name="countrycode" />
-    <input type="submit" value="提交" />
+    <br>name:<input type="text" name="name" /></br>
+    <br>countrycode:<input type="text" name="countrycode"></br>
+    <br>district:<input type="text" name="district">
+    <br>population:<input type="text" name="population">
+    <br><input type="submit" value="提交" />
 </form>
 </body>
 </html>

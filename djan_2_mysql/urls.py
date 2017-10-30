@@ -20,7 +20,7 @@ from web_app.views import index, del_content, add_form, edit_form
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
-    # url(r'^index+', index),
+    url(r'index', index),
     url(r'^del+', del_content),
     url(r'^add+', add_form),
     url(r'^edit+', edit_form)

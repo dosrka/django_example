@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.core import serializers
 from web_app import models
 import json
@@ -27,9 +28,15 @@ def index(request):
 
 
 def del_content(request):
+
+    url_id=request.META['HTTP_REFERER']
     nid = request.GET.get("nid")
+
+    print(url_id)
+    print("="*50)
     models.City.objects.filter(id=nid).delete()
-    return redirect(index)
+    # return redirect('index?page=%s' % url_id)
+    return HttpResponseRedirect(url_id)
 
 
 def add_form(request):
@@ -38,7 +45,13 @@ def add_form(request):
     elif request.method == "POST":
         name = request.POST.get('name')
         countrycode = request.POST.get('countrycode')
-        models.City.objects.create(name=name, countrycode=countrycode)
+        district = request.POST.get('district')
+        population = request.POST.get('population')
+        models.City.objects.create(name=name,
+                                   countrycode=countrycode,
+                                   district=district,
+                                   population=population
+                                   )
         return redirect(index)
 
 
