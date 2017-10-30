@@ -8,8 +8,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
     # 每页显示的数据条数
-    limit = 70
-    city_list_json = serializers.serialize("json", models.CityCopy1.objects.all())
+    limit = 5
+    city_list_json = serializers.serialize("json", models.City.objects.all())
     # 取出的json数据为str格式
     city_list = json.loads(city_list_json)
     # 转换后的list，里面都是字典
@@ -28,5 +28,40 @@ def index(request):
 
 def del_content(request):
     nid = request.GET.get("nid")
-    models.CityCopy1.objects.filter(id=nid).delete()
+    models.City.objects.filter(id=nid).delete()
+    return redirect(index)
+
+
+def add_form(request):
+    if request.method == "GET":
+        return render(request, 'add_form.html')
+    elif request.method == "POST":
+        name = request.POST.get('name')
+        countrycode = request.POST.get('countrycode')
+        models.City.objects.create(name=name, countrycode=countrycode)
+        return redirect(index)
+
+
+def edit_form(request):
+    if request.method == "GET":
+        nid = request.GET.get('nid')
+        obj = models.City.objects.filter(id=nid).first()
+        obj_json = serializers.serialize("json", models.City.objects.filter(id=nid))
+        # 取出的json数据为str格式
+        city = json.loads(obj_json)
+
+        print("="*50)
+        print(city)
+        return render(request, 'edit_form.html', {'obj': obj, 'city': city})
+    elif request.method == "POST":
+        nid = request.GET.get('nid')
+        name = request.POST.get('name')
+        countrycode = request.POST.get('countrycode')
+        district = request.POST.get('district')
+        population = request.POST.get('population')
+        models.City.objects.filter(id=nid).update(name=name,
+                                                  countrycode=countrycode,
+                                                  district=district,
+                                                  population=population
+                                                  )
     return redirect(index)

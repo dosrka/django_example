@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+{#<form action="" method="post">#}
+{#    <input type="text" name="countrycode"/>#}
+{#    <input type="submit" value="提交" />#}
+{#</form>#}
     <h1 align="center">信息展示</h1>
     <table align="center">
     <tr align="center">
@@ -24,7 +28,11 @@
         <td>{{ row.fields.population }}</td>
         <td>
             <a href="/del?nid={{ row.pk }}">删除</a>
-{#            <input type="button" value="删除" onclick="nid={{ row.pk }}">#}
+{#            <form method="post">#}
+{#            <button type="submit" >Click Me!</button>#}
+{#            </form>#}
+            <a href="add_form.html">添加</a>
+            <a href="edit_form.html?nid={{ row.pk }}">编辑</a>
         </td>
     </tr>
     {% endfor %}

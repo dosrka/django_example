@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<tr>
+    {% for row in city %}
+        <th><b>name:  </b>{{ row.fields.name }}</th>
+        <th><b>countrycode:  </b>{{ row.fields.countrycode }}</th>
+        <th><b>district:  </b>{{ row.fields.district }}</th>
+        <th><b>population:  </b>{{ row.fields.population }}</th>
+    {% endfor %}
+</tr>
+<p><b>更改为：</b></p>
+    <form action="edit_form.html?nid={{ obj.id }}" method="POST">
+        {% csrf_token %}
+    <br>name:<input type="text" name="name" /></br>
+    <br>countrycode:<input type="text" name="countrycode"></br>
+    <br>district:<input type="text" name="district">
+    <br>population:<input type="text" name="population">
+    <br><input type="submit" value="提交"/>
+</form>
+</body>
+</html>
