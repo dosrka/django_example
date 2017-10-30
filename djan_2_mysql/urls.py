@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from web_app.views import index, del_content, add_form, edit_form
+from web_app.views import index, del_content, add_form, edit_form, find_form
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,5 +23,7 @@ urlpatterns = [
     url(r'index', index),
     url(r'^del+', del_content),
     url(r'^add+', add_form),
-    url(r'^edit+', edit_form)
+    url(r'^edit+', edit_form),
+    url(r'^find_form+', find_form),
+    # url(r'^find_')
 ]

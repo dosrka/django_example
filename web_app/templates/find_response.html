@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询值</title>
+<p align="center">
+    {% for row in find_content %}
+        {{ row.fields }}
+{#        {{ row.fields.name}}#}
+    {% endfor %}
+<br><a href="index.html">返回首页</a>
+</p>
+</head>
+<body>
+
+</body>
+</html>

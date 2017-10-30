@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<form action="find_form.html" method="POST">
+    {% csrf_token %}
+    <br>要查询的id:<input type="text" name="id" /></br>
+    <br><input type="submit" value="提交" />
+</form>
 </body>
 </html>
